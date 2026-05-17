@@ -28,11 +28,17 @@ public class Connector {
         try {
             Class.forName(jdbc_driver);
 
-            // conn = DriverManager.getConnection(url_db, username_db, password_db);
-
             conn = DriverManager.getConnection(url_db);
 
+            
             System.out.println("SQLite Connected");
+                    // try (Statement stmt = conn.createStatement()) {
+                    //     stmt.execute("INSERT OR IGNORE INTO users (username, password, nama_lengkap) "
+                    //                + "VALUES ('Wortellemez', 'NIM123', 'Dimas Rizki Ardiansyah')");
+                    //     System.out.println("User Baru Berhasil Ditambahkan!");
+                    // } catch (Exception e) {
+                    //     System.out.println("Gagal menambahkan user: " + e.getMessage());
+                    // }
         } catch (ClassNotFoundException | SQLException exception) {
             System.out.println("Connection Failed: " + exception.getLocalizedMessage());
         }
