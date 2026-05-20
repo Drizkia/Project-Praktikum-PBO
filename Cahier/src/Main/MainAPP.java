@@ -6,8 +6,8 @@ package Main;
 
 import Model.Connector;
 import Model.Data.User;
-import View.ViewLogin;
-import Controller.ControllerLogin;
+import View.*;
+import Controller.*;
 
 /**
  *
@@ -17,8 +17,10 @@ public class MainAPP {
     public static void main(String[] args) {
 //        Connector.connect();
 
-        ViewLogin view = new ViewLogin();
-        new ControllerLogin(view);
+        ViewTransaksi view = new ViewTransaksi();
+        new ViewTransaksi();
+//        ViewLogin view = new ViewLogin();
+//        new ControllerLogin(view);
 
     }
 }

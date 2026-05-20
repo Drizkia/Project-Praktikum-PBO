@@ -6,6 +6,7 @@ package Controller;
 
 import Model.Connector;
 import View.ViewLogin;
+import View.ViewMenuUtama;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -34,7 +35,7 @@ public class ControllerLogin {
                 
                 // Cek kosong atau isi
                 if(username.isEmpty() || password.isEmpty()) {
-                    JOptionPane.showMessageDialog(null, "Username/Password gaboleh kosong");
+                    view.showMessage("Username/Password gaboleh kosong", ViewLogin.MessageType.ERROR);
                     
                     return;
                 } 
@@ -49,13 +50,19 @@ public class ControllerLogin {
                     ResultSet rs = ps.executeQuery();
                     
                     if(rs.next()) {
-                        JOptionPane.showMessageDialog(null, "Login Berhasil");
+                        view.showMessage("Login Berhasil", ViewLogin.MessageType.SUCCESS);
                         
                         // buat menu add disini @dimas
                         
-                        view.dispose();
+                        // Tunda 1 detik sebelum dispose agar user sempat melihat banner sukses
+                        javax.swing.Timer delayTimer = new javax.swing.Timer(1000, evt -> {
+                            view.dispose();
+                            new ViewMenuUtama(); // Buka Menu Utama kustom setelah login sukses
+                        });
+                        delayTimer.setRepeats(false);
+                        delayTimer.start();
                     } else {
-                        JOptionPane.showMessageDialog(null, "Username/Password Salah");
+                        view.showMessage("Username/Password Salah", ViewLogin.MessageType.ERROR);
                     }
                 } catch(Exception ex) {
                     ex.printStackTrace();
