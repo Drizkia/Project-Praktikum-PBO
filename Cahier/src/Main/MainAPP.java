@@ -17,8 +17,9 @@ public class MainAPP {
     public static void main(String[] args) {
 //        Connector.connect();
 
-        ViewTransaksi view = new ViewTransaksi();
-        new ViewTransaksi();
+        // ViewTransaksi view = new ViewTransaksi();
+        ViewCekStok view = new ViewCekStok();
+        new ViewCekStok();
 //        ViewLogin view = new ViewLogin();
 //        new ControllerLogin(view);
 

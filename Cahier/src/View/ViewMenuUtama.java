@@ -129,6 +129,16 @@ public class ViewMenuUtama extends JFrame {
             dispose();
         });
 
+        btnRiwayat.addActionListener(e -> {
+            new ViewRiwayat();
+            dispose();
+        });
+
+        btnCekStok.addActionListener(e -> {
+            new ViewCekStok();
+            dispose();
+        });
+
         btnLogout.addActionListener(e -> {
             new ViewLogin();
             dispose();
