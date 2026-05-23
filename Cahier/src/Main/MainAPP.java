@@ -4,8 +4,9 @@
  */
 package Main;
 
-import Controller.*;
 import View.*;
+import Controller.*;
+
 
 /**
  *
@@ -15,8 +16,16 @@ public class MainAPP {
     public static void main(String[] args) {
 //        Connector.connect();
 
-        ViewMenuUtama view = new ViewMenuUtama();
-        new ControllerMenuUtama(view);
+//        new ViewCekStok();
+
+//        ViewMenuUtama view = new ViewMenuUtama();
+//        new ControllerMenuUtama(view);
+
+        // ViewCekStok view = new ViewCekStok();
+        // new ViewCekStok();
+
+       ViewMenuUtama view = new ViewMenuUtama();
+       new ControllerMenuUtama(view);
         
 //        ViewLogin view = new ViewLogin();
 //        new ControllerLogin(view);
