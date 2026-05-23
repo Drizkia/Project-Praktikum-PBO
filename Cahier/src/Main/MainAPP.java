@@ -4,10 +4,8 @@
  */
 package Main;
 
-import Model.Connector;
-import Model.Data.User;
-import View.*;
 import Controller.*;
+import View.*;
 
 /**
  *
@@ -17,10 +15,11 @@ public class MainAPP {
     public static void main(String[] args) {
 //        Connector.connect();
 
-//        ViewTransaksi view = new ViewTransaksi();
-//        new ViewTransaksi();
-        ViewLogin view = new ViewLogin();
-        new ControllerLogin(view);
+        ViewMenuUtama view = new ViewMenuUtama();
+        new ControllerMenuUtama(view);
+        
+//        ViewLogin view = new ViewLogin();
+//        new ControllerLogin(view);
 
     }
 }

@@ -1,19 +1,17 @@
 package View;
 
-import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.table.JTableHeader;
-import javax.swing.table.DefaultTableCellRenderer;
-import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
-
 import java.awt.*;
 import java.awt.geom.Path2D;
+import javax.swing.*;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
 
 /**
- * Tampilan Transaksi Penjualan Modern & Estetik untuk Aplikasi Kasir (Cahier)
+ * Panel Transaksi Penjualan - Embeddable untuk Sidebar Menu
  * @author LENOVO
  */
-public class ViewTransaksi extends JFrame {
+public class ViewTransaksi extends JPanel {
     // Komponen publik agar dapat dihubungkan ke database oleh Controller eksternal
     public JComboBox<String> cbKategori;
     public JTextField tfCari;
@@ -23,80 +21,37 @@ public class ViewTransaksi extends JFrame {
     public JButton btnTambah;
     public JButton btnHapus;
     public JButton btnBayar;
-    public JButton btnKembali;
     public JLabel lblTotalHarga;
 
     public ViewTransaksi() {
-        // Pengaturan Frame
-        setTitle("Transaksi Kasir - Cahier");
-        setSize(950, 600);
-        setLayout(null);
-        setLocationRelativeTo(null);
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setUndecorated(true);
-        setBackground(new Color(0, 0, 0, 0)); // Jendela transparan untuk efek sudut melengkung
+        setBackground(new Color(249, 250, 251));
+        setLayout(new BorderLayout());
 
-        // Kontainer utama dengan sudut melengkung
-        RoundPanel mainContainer = new RoundPanel(20);
-        mainContainer.setBackground(new Color(249, 250, 251)); // Latar belakang abu-abu terang (Gray-50)
-        mainContainer.setBounds(0, 0, 950, 600);
-        add(mainContainer);
+        // Panel wrapper untuk konten (menggantikan mainContainer yang sebelumnya)
+        JPanel mainContent = new JPanel(null);
+        mainContent.setBackground(new Color(249, 250, 251));
+        add(mainContent, BorderLayout.CENTER);
 
         // --- PANEL HEADER BRANDING (Gradasi Indigo-Blue) ---
         GradientPanel headerPanel = new GradientPanel();
-        headerPanel.setBounds(0, 0, 950, 100);
-        mainContainer.add(headerPanel);
+        headerPanel.setBounds(0, 0, 950, 70);
+        mainContent.add(headerPanel);
 
         JLabel lblTitle = new JLabel("Transaksi Baru");
-        lblTitle.setFont(new Font("Segoe UI", Font.BOLD, 24));
+        lblTitle.setFont(new Font("Segoe UI", Font.BOLD, 20));
         lblTitle.setForeground(Color.WHITE);
-        lblTitle.setBounds(40, 20, 250, 30);
+        lblTitle.setBounds(20, 15, 250, 25);
         headerPanel.add(lblTitle);
-
-        JLabel lblDesc = new JLabel("Pilih kategori barang, klik barang untuk menambahkan ke keranjang belanja");
-        lblDesc.setFont(new Font("Segoe UI", Font.PLAIN, 12));
-        lblDesc.setForeground(new Color(224, 231, 255)); // Indigo-100
-        lblDesc.setBounds(40, 52, 500, 20);
-        headerPanel.add(lblDesc);
-
-        // Tombol Kembali ke Menu Utama
-        btnKembali = new RoundButton("Kembali ke Menu", 10);
-        btnKembali.setFont(new Font("Segoe UI", Font.BOLD, 12));
-        btnKembali.setForeground(Color.WHITE);
-        btnKembali.setBounds(950 - 240, 30, 140, 36);
-        headerPanel.add(btnKembali);
-
-        // Tombol Close Window
-        JButton btnClose = new JButton("✕");
-        btnClose.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-        btnClose.setForeground(new Color(224, 231, 255));
-        btnClose.setContentAreaFilled(false);
-        btnClose.setBorderPainted(false);
-        btnClose.setFocusPainted(false);
-        btnClose.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        btnClose.setBounds(950 - 45, 15, 30, 30);
-        btnClose.addMouseListener(new java.awt.event.MouseAdapter() {
-            @Override
-            public void mouseEntered(java.awt.event.MouseEvent e) {
-                btnClose.setForeground(new Color(254, 226, 226));
-            }
-            @Override
-            public void mouseExited(java.awt.event.MouseEvent e) {
-                btnClose.setForeground(new Color(224, 231, 255));
-            }
-        });
-        btnClose.addActionListener(e -> System.exit(0));
-        headerPanel.add(btnClose);
 
         // --- PANEL KIRI: DAFTAR BARANG & FILTER ---
         RoundPanel pnlDaftarBarang = new RoundPanel(16);
         pnlDaftarBarang.setBackground(Color.WHITE);
-        pnlDaftarBarang.setBounds(30, 120, 500, 450);
+        pnlDaftarBarang.setBounds(15, 85, 500, 450);
         pnlDaftarBarang.setBorder(BorderFactory.createCompoundBorder(
             BorderFactory.createLineBorder(new Color(243, 244, 246), 1),
             BorderFactory.createEmptyBorder(15, 15, 15, 15)
         ));
-        mainContainer.add(pnlDaftarBarang);
+        mainContent.add(pnlDaftarBarang);
 
         JLabel lblKategori = new JLabel("Kategori Barang");
         lblKategori.setFont(new Font("Segoe UI", Font.BOLD, 12));
@@ -160,12 +115,12 @@ public class ViewTransaksi extends JFrame {
         // --- PANEL KANAN: KERANJANG BELANJA ---
         RoundPanel pnlKeranjang = new RoundPanel(16);
         pnlKeranjang.setBackground(Color.WHITE);
-        pnlKeranjang.setBounds(550, 120, 370, 450);
+        pnlKeranjang.setBounds(535, 85, 370, 450);
         pnlKeranjang.setBorder(BorderFactory.createCompoundBorder(
             BorderFactory.createLineBorder(new Color(243, 244, 246), 1),
             BorderFactory.createEmptyBorder(15, 15, 15, 15)
         ));
-        mainContainer.add(pnlKeranjang);
+        mainContent.add(pnlKeranjang);
 
         JLabel lblKeranjangTitle = new JLabel("Keranjang Belanja");
         lblKeranjangTitle.setFont(new Font("Segoe UI", Font.BOLD, 15));
@@ -215,38 +170,6 @@ public class ViewTransaksi extends JFrame {
         btnBayar = new RoundButton("PROSES PEMBAYARAN", 10);
         btnBayar.setBounds(20, 385, 330, 45);
         pnlKeranjang.add(btnBayar);
-
-        // Pengaturan kembali ke menu utama
-        btnKembali.addActionListener(e -> {
-            new ViewMenuUtama();
-            dispose();
-        });
-
-        // Mekanisme Geser Jendela (Window Dragging)
-        java.awt.event.MouseAdapter dragListener = new java.awt.event.MouseAdapter() {
-            private Point pressedPoint;
-            @Override
-            public void mousePressed(java.awt.event.MouseEvent e) {
-                pressedPoint = e.getPoint();
-            }
-
-            @Override
-            public void mouseDragged(java.awt.event.MouseEvent e) {
-                Point curr = e.getLocationOnScreen();
-                Component src = (Component) e.getSource();
-                Point compOnScreen = src.getLocationOnScreen();
-                int frameX = compOnScreen.x - getX();
-                int frameY = compOnScreen.y - getY();
-                setLocation(curr.x - pressedPoint.x - frameX, curr.y - pressedPoint.y - frameY);
-            }
-        };
-
-        mainContainer.addMouseListener(dragListener);
-        mainContainer.addMouseMotionListener(dragListener);
-        headerPanel.addMouseListener(dragListener);
-        headerPanel.addMouseMotionListener(dragListener);
-
-        setVisible(true);
     }
 
     /**
