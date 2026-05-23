@@ -18,8 +18,8 @@ public class MainAPP {
 //        Connector.connect();
 
         // ViewTransaksi view = new ViewTransaksi();
-        ViewCekStok view = new ViewCekStok();
-        new ViewCekStok();
+        ViewMenuUtama view = new ViewMenuUtama();
+//        new ViewCekStok();
 //        ViewLogin view = new ViewLogin();
 //        new ControllerLogin(view);
 
