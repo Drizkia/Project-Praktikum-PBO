@@ -9,5 +9,5 @@ package View;
  * @author LENOVO
  */
 public class ViewCekStok {
-    
+
 }
