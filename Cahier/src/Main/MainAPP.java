@@ -17,10 +17,10 @@ public class MainAPP {
     public static void main(String[] args) {
 //        Connector.connect();
 
-        ViewTransaksi view = new ViewTransaksi();
-        new ViewTransaksi();
-//        ViewLogin view = new ViewLogin();
-//        new ControllerLogin(view);
+//        ViewTransaksi view = new ViewTransaksi();
+//        new ViewTransaksi();
+        ViewLogin view = new ViewLogin();
+        new ControllerLogin(view);
 
     }
 }

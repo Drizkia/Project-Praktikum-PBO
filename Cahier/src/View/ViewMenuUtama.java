@@ -25,36 +25,9 @@ public class ViewMenuUtama extends JFrame {
         // Pengaturan Frame
         setTitle("Menu Utama - Cahier");
         setSize(750, 480);
-        setLayout(null);
+        setLayout(new BorderLayout());
         setLocationRelativeTo(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setUndecorated(true);
-        setBackground(new Color(0, 0, 0, 0)); // Jendela transparan untuk efek sudut melengkung
-
-        // Kontainer utama dengan sudut melengkung
-        RoundPanel mainContainer = new RoundPanel(20);
-        mainContainer.setBackground(new Color(249, 250, 251)); // Latar belakang abu-abu terang (Gray-50)
-        mainContainer.setBounds(0, 0, 750, 480);
-        add(mainContainer);
-
-        // --- PANEL BRANDING ATAS (Gradasi) ---
-        GradientPanel headerPanel = new GradientPanel();
-        headerPanel.setBounds(0, 0, 750, 130);
-        mainContainer.add(headerPanel);
-
-        // Label Brand Cahier
-        JLabel lblLogo = new JLabel("CAHIER");
-        lblLogo.setFont(new Font("Segoe UI", Font.BOLD, 28));
-        lblLogo.setForeground(Color.WHITE);
-        lblLogo.setBounds(40, 25, 200, 35);
-        headerPanel.add(lblLogo);
-
-        JLabel lblSub = new JLabel("Menu Utama Kasir — Silakan pilih menu di bawah ini");
-        lblSub.setFont(new Font("Segoe UI", Font.PLAIN, 13));
-        lblSub.setForeground(new Color(224, 231, 255)); // Indigo-100
-        lblSub.setBounds(40, 65, 450, 20);
-        headerPanel.add(lblSub);
-
         // Tombol Minimize
         JButton btnMinimize = new JButton("—");
         btnMinimize.setFont(new Font("Segoe UI", Font.BOLD, 14));
