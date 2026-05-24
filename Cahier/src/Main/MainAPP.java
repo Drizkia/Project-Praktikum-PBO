@@ -30,5 +30,7 @@ public class MainAPP {
        ViewLogin view = new ViewLogin();
        new ControllerLogin(view);
 
+//        new CheckDB();
+
     }
 }
