@@ -50,6 +50,12 @@ public class ControllerLogin {
                     if (rs.next()) {
                         view.showMessage("Login Berhasil", ViewLogin.MessageType.SUCCESS);
 
+                        Main.MainAPP.loggedInUserId = rs.getInt("id_user");
+                        Main.MainAPP.loggedInUserNama = rs.getString("nama_lengkap");
+
+                        rs.close();
+                        ps.close();
+
                         // Tunda 1 detik sebelum dispose agar user sempat melihat banner sukses
                         javax.swing.Timer delayTimer = new javax.swing.Timer(1000, evt -> {
                             view.dispose();
@@ -60,6 +66,8 @@ public class ControllerLogin {
                         delayTimer.start();
                     } else {
                         view.showMessage("Username/Password Salah", ViewLogin.MessageType.ERROR);
+                        rs.close();
+                        ps.close();
                     }
                 } catch (Exception ex) {
                     ex.printStackTrace();

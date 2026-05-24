@@ -13,6 +13,9 @@ import Controller.*;
  * @author LENOVO
  */
 public class MainAPP {
+    public static int loggedInUserId = 1;
+    public static String loggedInUserNama = "Dimas Rizki Ardiansyah";
+
     public static void main(String[] args) {
 //        Connector.connect();
 

@@ -60,20 +60,26 @@ public class ControllerMenuUtama {
      * Mengembalikan ViewTransaksi untuk ditampilkan di sidebar
      */
     private JPanel createTransaksiPanel() {
-        return new ViewTransaksi();
+        ViewTransaksi viewPanel = new ViewTransaksi();
+        new ControllerTransaksi(viewPanel);
+        return viewPanel;
     }
 
     /**
      * Mengembalikan ViewRiwayat untuk ditampilkan di sidebar
      */
     private JPanel createRiwayatPanel() {
-        return new ViewRiwayat();
+        ViewRiwayat viewPanel = new ViewRiwayat();
+        new ControllerRiwayat(viewPanel);
+        return viewPanel;
     }
 
     /**
      * Mengembalikan ViewCekStok untuk ditampilkan di sidebar
      */
     private JPanel createCekStokPanel() {
-        return new ViewCekStok();
+        ViewCekStok viewPanel = new ViewCekStok();
+        new ControllerCekStok(viewPanel);
+        return viewPanel;
     }
 }

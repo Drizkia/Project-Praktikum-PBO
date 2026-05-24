@@ -1,2 +1,4 @@
-/Cahier/build/
-/Cahier/dist/
+*.class 
+Cahier/build/ 
+Cahier/dist/ 
+nbproject/ 
