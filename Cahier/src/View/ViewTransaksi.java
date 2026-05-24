@@ -1,3 +1,7 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package View;
 
 import java.awt.*;
@@ -8,7 +12,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 
 /**
- * Panel Transaksi Penjualan - Embeddable untuk Sidebar Menu
+ *
  * @author LENOVO
  */
 public class ViewTransaksi extends JPanel {
@@ -27,12 +31,13 @@ public class ViewTransaksi extends JPanel {
         setBackground(new Color(249, 250, 251));
         setLayout(new BorderLayout());
 
-        // Panel wrapper untuk konten (menggantikan mainContainer yang sebelumnya)
+        // Panel wrapper untuk konten 
         JPanel mainContent = new JPanel(null);
         mainContent.setBackground(new Color(249, 250, 251));
+        mainContent.setPreferredSize(new Dimension(950, 560));
         add(mainContent, BorderLayout.CENTER);
 
-        // --- PANEL HEADER BRANDING (Gradasi Indigo-Blue) ---
+        // PANEL HEADER
         GradientPanel headerPanel = new GradientPanel();
         headerPanel.setBounds(0, 0, 950, 70);
         mainContent.add(headerPanel);
@@ -43,7 +48,7 @@ public class ViewTransaksi extends JPanel {
         lblTitle.setBounds(20, 15, 250, 25);
         headerPanel.add(lblTitle);
 
-        // --- PANEL KIRI: DAFTAR BARANG & FILTER ---
+        // DAFTAR BARANG & FILTER (KIRI)
         RoundPanel pnlDaftarBarang = new RoundPanel(16);
         pnlDaftarBarang.setBackground(Color.WHITE);
         pnlDaftarBarang.setBounds(15, 85, 500, 450);
@@ -77,7 +82,7 @@ public class ViewTransaksi extends JPanel {
         tfCari.setBounds(240, 42, 240, 36);
         pnlDaftarBarang.add(tfCari);
 
-        // Tabel Barang kustom estetik
+        // Tabel Barang
         String[] colBarang = {"ID Barang", "Nama Barang", "Harga", "Stok"};
         DefaultTableModel modelBarang = new DefaultTableModel(colBarang, 0) {
             @Override
@@ -112,7 +117,7 @@ public class ViewTransaksi extends JPanel {
         btnTambah.setBounds(185, 388, 295, 34);
         pnlDaftarBarang.add(btnTambah);
 
-        // --- PANEL KANAN: KERANJANG BELANJA ---
+        // KERANJANG BELANJA (KANAN)
         RoundPanel pnlKeranjang = new RoundPanel(16);
         pnlKeranjang.setBackground(Color.WHITE);
         pnlKeranjang.setBounds(535, 85, 370, 450);
@@ -128,7 +133,7 @@ public class ViewTransaksi extends JPanel {
         lblKeranjangTitle.setBounds(20, 15, 200, 25);
         pnlKeranjang.add(lblKeranjangTitle);
 
-        // Tabel Keranjang kustom estetik
+        // Tabel Keranjang
         String[] colKeranjang = {"Nama Barang", "Harga", "Jumlah", "Subtotal"};
         DefaultTableModel modelKeranjang = new DefaultTableModel(colKeranjang, 0) {
             @Override
@@ -172,9 +177,6 @@ public class ViewTransaksi extends JPanel {
         pnlKeranjang.add(btnBayar);
     }
 
-    /**
-     * Styling JTable agar memiliki visual yang modern & minimalis.
-     */
     private void styleTable(JTable table) {
         table.setFont(new Font("Segoe UI", Font.PLAIN, 12));
         table.setForeground(new Color(55, 65, 81)); // Gray-700
@@ -205,8 +207,6 @@ public class ViewTransaksi extends JPanel {
         });
     }
 
-    // --- Komponen Desain Kustom Internal ---
-
     class GradientPanel extends JPanel {
         private Color color1 = new Color(79, 70, 229); // Indigo-600
         private Color color2 = new Color(59, 130, 246); // Blue-500
@@ -223,7 +223,7 @@ public class ViewTransaksi extends JPanel {
             g2.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
             g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
             
-            // Lengkungkan sudut kiri-atas dan kanan-atas pada panel gradasi
+            // Lengkungkan sudut
             int r = 20; 
             int w = getWidth();
             int h = getHeight();
@@ -239,12 +239,11 @@ public class ViewTransaksi extends JPanel {
             
             g2.setClip(path);
             
-            // Gambar latar belakang gradasi
+            // Gambar latar belakang
             GradientPaint gp = new GradientPaint(0, 0, color1, w, h, color2);
             g2.setPaint(gp);
             g2.fillRect(0, 0, w, h);
             
-            // Gambar hamparan geometris halus
             g2.setColor(new Color(255, 255, 255, 20));
             g2.fillOval(w - 180, -80, 260, 260);
             g2.fillOval(-100, -100, 220, 220);
@@ -391,7 +390,6 @@ public class ViewTransaksi extends JPanel {
             Graphics2D g2 = (Graphics2D) g.create();
             g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
             
-            // Menggunakan background kustom jika sudah diset secara manual di instance luar
             Color bg = getBackground();
             if (bg != null && !bg.equals(new JButton().getBackground())) {
                 if (isPressed) {

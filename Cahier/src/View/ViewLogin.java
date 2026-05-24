@@ -1,20 +1,21 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package View;
 
 import javax.swing.*;
 import java.awt.*;
 
 /**
- * A moderately styled login view that keeps compatibility with ControllerLogin.
- * It features a simple gradient side panel for visual interest while using
- * standard Swing components for the login form.
+ *
+ * @author LENOVO
  */
 public class ViewLogin extends JFrame {
-    // Public fields accessed by ControllerLogin
     public JTextField tfUsername;
     public JPasswordField pfPassword;
     public JButton btnLogin;
 
-    // Notification components
     private JPanel pnlMessage;
     private JLabel lblMessage;
     private javax.swing.Timer messageTimer;
@@ -30,7 +31,7 @@ public class ViewLogin extends JFrame {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
 
-        // Left gradient panel (visual flair)
+        // Panel Kiri
         JPanel leftPanel = new GradientPanel();
         leftPanel.setPreferredSize(new Dimension(180, 0));
         leftPanel.setLayout(new GridBagLayout());
@@ -50,21 +51,21 @@ public class ViewLogin extends JFrame {
         leftPanel.add(slogan, gbcLeft);
         add(leftPanel, BorderLayout.WEST);
 
-        // Right panel with form
+        // Panel Kanan 
         JPanel formPanel = new JPanel(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.insets = new Insets(5, 5, 5, 5);
         gbc.fill = GridBagConstraints.HORIZONTAL;
         int row = 0;
 
-        // Message panel (spans two columns)
+        // Message panel
         gbc.gridx = 0;
         gbc.gridy = row++;
         gbc.gridwidth = 2;
         formPanel.add(createMessagePanel(), gbc);
         gbc.gridwidth = 1;
 
-        // Username label and field
+        // Username
         gbc.gridx = 0;
         gbc.gridy = row;
         formPanel.add(new JLabel("Username:"), gbc);
@@ -73,7 +74,7 @@ public class ViewLogin extends JFrame {
         formPanel.add(tfUsername, gbc);
         row++;
 
-        // Password label and field
+        // Password
         gbc.gridx = 0;
         gbc.gridy = row;
         formPanel.add(new JLabel("Password:"), gbc);
@@ -82,7 +83,7 @@ public class ViewLogin extends JFrame {
         formPanel.add(pfPassword, gbc);
         row++;
 
-        // Login button spanning two columns
+        // Login button
         gbc.gridx = 0;
         gbc.gridy = row;
         gbc.gridwidth = 2;
@@ -95,9 +96,6 @@ public class ViewLogin extends JFrame {
         setVisible(true);
     }
 
-    /**
-     * Creates the message panel used for toast‑style notifications.
-     */
     private JPanel createMessagePanel() {
         pnlMessage = new JPanel(new BorderLayout());
         pnlMessage.setBackground(new Color(254, 242, 242));
@@ -108,9 +106,6 @@ public class ViewLogin extends JFrame {
         return pnlMessage;
     }
 
-    /**
-     * Shows a notification message with style based on the {@link MessageType}.
-     */
     public void showMessage(String text, MessageType type) {
         if (messageTimer != null && messageTimer.isRunning()) {
             messageTimer.stop();
@@ -136,9 +131,6 @@ public class ViewLogin extends JFrame {
         messageTimer.start();
     }
 
-    /**
-     * Simple gradient panel for the left side branding.
-     */
     private static class GradientPanel extends JPanel {
         @Override
         protected void paintComponent(Graphics g) {

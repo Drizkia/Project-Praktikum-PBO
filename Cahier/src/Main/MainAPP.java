@@ -24,11 +24,11 @@ public class MainAPP {
         // ViewCekStok view = new ViewCekStok();
         // new ViewCekStok();
 
-       ViewMenuUtama view = new ViewMenuUtama();
-       new ControllerMenuUtama(view);
+    //    ViewMenuUtama view = new ViewMenuUtama();
+    //    new ControllerMenuUtama(view);
         
-//        ViewLogin view = new ViewLogin();
-//        new ControllerLogin(view);
+       ViewLogin view = new ViewLogin();
+       new ControllerLogin(view);
 
     }
 }

@@ -1,23 +1,28 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package View;
 
 import java.awt.*;
 import javax.swing.*;
 
 /**
- * Menu Utama dengan Sidebar - Panel Switching
+ *
+ * @author LENOVO
  */
 public class ViewMenuUtama extends JFrame {
     public JButton btnTransaksi;
     public JButton btnRiwayat;
     public JButton btnCekStok;
     public JButton btnLogout;
-    
+
     private JPanel mainContentPanel;
     private JPanel currentView;
 
     public ViewMenuUtama() {
         setTitle("CAHIER - Sistem Kasir");
-        setSize(1000, 650);
+        setSize(1200, 700);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
@@ -26,17 +31,17 @@ public class ViewMenuUtama extends JFrame {
         JPanel headerPanel = new GradientPanel();
         headerPanel.setPreferredSize(new Dimension(0, 60));
         headerPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 20, 15));
-        
+
         JLabel titleLabel = new JLabel("CAHIER");
         titleLabel.setFont(new Font("Segoe UI", Font.BOLD, 24));
         titleLabel.setForeground(Color.WHITE);
         headerPanel.add(titleLabel);
-        
+
         add(headerPanel, BorderLayout.NORTH);
 
-        // MAIN CONTAINER (Sidebar + Content)
+        // MAIN CONTAINER
         JPanel mainContainer = new JPanel(new BorderLayout());
-        
+
         // SIDEBAR
         JPanel sidebar = new JPanel();
         sidebar.setBackground(new Color(245, 247, 250));
@@ -52,7 +57,7 @@ public class ViewMenuUtama extends JFrame {
         sidebarTitle.setAlignmentX(Component.LEFT_ALIGNMENT);
         sidebar.add(sidebarTitle);
 
-        // Sidebar buttons
+        // Sidebar button
         btnTransaksi = createSidebarButton("Transaksi Baru", new Color(79, 70, 229));
         btnTransaksi.setAlignmentX(Component.LEFT_ALIGNMENT);
         sidebar.add(btnTransaksi);
@@ -75,11 +80,11 @@ public class ViewMenuUtama extends JFrame {
 
         mainContainer.add(sidebar, BorderLayout.WEST);
 
-        // MAIN CONTENT AREA
+        // MAIN CONTENT
         mainContentPanel = new JPanel(new BorderLayout());
         mainContentPanel.setBackground(new Color(249, 250, 251));
-        
-        // Default welcome view
+
+        // welcome view
         currentView = createWelcomePanel();
         mainContentPanel.add(currentView, BorderLayout.CENTER);
 
@@ -103,9 +108,7 @@ public class ViewMenuUtama extends JFrame {
         setVisible(true);
     }
 
-    /**
-     * Switch content panel
-     */
+    // Switch Content
     public void setContentView(JPanel newView) {
         if (currentView != null) {
             mainContentPanel.remove(currentView);
@@ -116,9 +119,7 @@ public class ViewMenuUtama extends JFrame {
         mainContentPanel.repaint();
     }
 
-    /**
-     * Create welcome/greeting panel
-     */
+    // Welcome
     private JPanel createWelcomePanel() {
         JPanel panel = new JPanel(new GridBagLayout());
         panel.setBackground(new Color(249, 250, 251));
@@ -144,9 +145,7 @@ public class ViewMenuUtama extends JFrame {
         return panel;
     }
 
-    /**
-     * Create sidebar button
-     */
+    // Side Bar Button
     private JButton createSidebarButton(String text, Color themeColor) {
         JButton btn = new JButton(text);
         btn.setMaximumSize(new Dimension(180, 45));
@@ -185,7 +184,6 @@ public class ViewMenuUtama extends JFrame {
         return btn;
     }
 
-    // Gradient header panel
     private static class GradientPanel extends JPanel {
         @Override
         protected void paintComponent(Graphics g) {

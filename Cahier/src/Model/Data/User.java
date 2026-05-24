@@ -7,8 +7,6 @@ package Model.Data;
 /**
  *
  * @author LENOVO
- * Class Model untuk merepresentasikan data User.
- * Kelas ini digunakan sebagai penampung data (Entity / POJO) dari tabel database.
  */
 public class User {
     // Encapsulation

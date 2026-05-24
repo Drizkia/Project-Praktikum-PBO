@@ -1,13 +1,17 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package Controller;
 
 import View.*;
-import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.*;
 
 /**
- * Controller untuk Menu Utama - Handle panel switching
+ *
+ * @author LENOVO
  */
 public class ControllerMenuUtama {
     private ViewMenuUtama view;
@@ -53,65 +57,23 @@ public class ControllerMenuUtama {
     }
 
     /**
-     * Mengembalikan ViewTransaksi sebagai JPanel untuk ditampilkan di sidebar
+     * Mengembalikan ViewTransaksi untuk ditampilkan di sidebar
      */
     private JPanel createTransaksiPanel() {
         return new ViewTransaksi();
     }
 
     /**
-     * Placeholder untuk Riwayat Panel
+     * Mengembalikan ViewRiwayat untuk ditampilkan di sidebar
      */
     private JPanel createRiwayatPanel() {
-        JPanel panel = new JPanel(new BorderLayout());
-        panel.setBackground(new Color(249, 250, 251));
-
-        // Header
-        JPanel headerPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 20, 15));
-        headerPanel.setBackground(new Color(240, 241, 245));
-        JLabel title = new JLabel("Riwayat Penjualan");
-        title.setFont(new Font("Segoe UI", Font.BOLD, 20));
-        title.setForeground(new Color(17, 24, 39));
-        headerPanel.add(title);
-        panel.add(headerPanel, BorderLayout.NORTH);
-
-        // Content placeholder
-        JPanel content = new JPanel(new GridBagLayout());
-        content.setBackground(new Color(249, 250, 251));
-        JLabel placeholder = new JLabel("Halaman Riwayat Penjualan");
-        placeholder.setFont(new Font("Segoe UI", Font.PLAIN, 14));
-        placeholder.setForeground(new Color(107, 114, 128));
-        content.add(placeholder);
-        panel.add(content, BorderLayout.CENTER);
-
-        return panel;
+        return new ViewRiwayat();
     }
 
     /**
-     * Placeholder untuk Cek Stok Panel
+     * Mengembalikan ViewCekStok untuk ditampilkan di sidebar
      */
     private JPanel createCekStokPanel() {
-        JPanel panel = new JPanel(new BorderLayout());
-        panel.setBackground(new Color(249, 250, 251));
-
-        // Header
-        JPanel headerPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 20, 15));
-        headerPanel.setBackground(new Color(240, 241, 245));
-        JLabel title = new JLabel("Cek Stok Barang");
-        title.setFont(new Font("Segoe UI", Font.BOLD, 20));
-        title.setForeground(new Color(17, 24, 39));
-        headerPanel.add(title);
-        panel.add(headerPanel, BorderLayout.NORTH);
-
-        // Content placeholder
-        JPanel content = new JPanel(new GridBagLayout());
-        content.setBackground(new Color(249, 250, 251));
-        JLabel placeholder = new JLabel("Halaman Cek Stok Barang");
-        placeholder.setFont(new Font("Segoe UI", Font.PLAIN, 14));
-        placeholder.setForeground(new Color(107, 114, 128));
-        content.add(placeholder);
-        panel.add(content, BorderLayout.CENTER);
-
-        return panel;
+        return new ViewCekStok();
     }
 }
